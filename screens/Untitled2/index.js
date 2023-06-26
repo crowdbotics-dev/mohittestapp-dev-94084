@@ -10,8 +10,10 @@ const LoginScreen = () => {
 
   const onSubmit = () => {
     dispatch(api_v1_login_create({
-      username: email,
-      password
+      data: {
+        username: email,
+        password
+      }
     }));
   };
 
