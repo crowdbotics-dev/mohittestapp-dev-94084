@@ -8,7 +8,11 @@ const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {// Handle login logic here
+  const onSubmit = () => {
+    dispatch(api_v1_login_create({
+      username: email,
+      password
+    }));
   };
 
   return <View style={styles.container}>
@@ -19,17 +23,10 @@ const LoginScreen = () => {
       </Pressable>
       <TextInput style={styles.input} onChangeText={setEmail} value={email} placeholder="Email" keyboardType="email-address" autoCapitalize="none" />
       <TextInput style={styles.input} onChangeText={setPassword} value={password} placeholder="Password" secureTextEntry />
-      <Pressable style={styles.button} onPress={handleLogin}>
+      <Pressable style={styles.button} onPress={onSubmit}>
         <Text style={styles.buttonText}>Login</Text>
       </Pressable>
     </View>;
-
-  const onSubmit = () => {
-    dispatch(api_v1_login_create({
-      username: email,
-      password
-    }));
-  };
 };
 
 const styles = StyleSheet.create({
